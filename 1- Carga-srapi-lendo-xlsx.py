@@ -66,7 +66,6 @@ for i1 in range(1, 11):
     #print(f"Status Code: {r.status_code}, Response: {r.json()}")
 
 
-
 print('*--------------------------------------------------------------------*')
 print('Foram inseridos no total:', i1 ,'dados na API.')
 print('*---------------------------------------------------------------------*')
