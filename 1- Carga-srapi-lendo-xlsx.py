@@ -50,7 +50,7 @@ sheet = workbook.sheet_by_name("Url")
 for i1 in range(1, 11):
     jsonFormatadoParaInsert = str(sheet.cell_value(rowx=i1, colx=2))
 
-    #Convertendo para dicionario = array
+    #Convertendo para dicionario = array caso algum dado esteja incorreto, entra no except:
     try:
         convertListDicionario = ast.literal_eval(jsonFormatadoParaInsert)
     except:
