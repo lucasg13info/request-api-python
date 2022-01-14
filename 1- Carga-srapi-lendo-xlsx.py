@@ -1,19 +1,18 @@
 ###########################################################################################################
 #                                                                                                         #
-#                                       ROBÔ DE CARGA NA API 2022                                          #
+#                                       ROBÔ DE CARGA NA API - 2022                                       #
 #                                                                                                         #
 ###########################################################################################################
 #                                                                                                         #
-#       - 1 - Realizado a conexão e leitura de uma aba e cola específico de uma planilha formato xlsx     #
+#       - 1 - Realizado a conexão e leitura de uma aba específico de uma planilha formato xlsx            #
 #       - 2 - Realizado um for para percorrer toda a coluna a ser lida                                    #
 #       - 3 - Convertido os valores recebidos para um "dicionário" (array)                                #
-#       - 3 - Realizado o POST na API passando todos os valores percorridos da planilha                   #
+#       - 4 - Realizado o POST na API passando todos os valores percorridos da planilha                   #
 #                                                                                                         #
 #                                                                                                         #
-#                                                       Implementado dia: 12/01/2022  - Lucas Estefano    #
+#                                                          Implementado dia: 12/01/2022  - Lucas Estefano #
 ###########################################################################################################
 #                                                                                                         #     
-#                                                                                                         #
 #                                   O JSON QUE ESTIVER NA PLANILHA                                        #
 #                                    DEVE FICAR NO FORMATO ABAIXO                                         #
 #                                                 |                                                       #
@@ -42,8 +41,6 @@ timerCod = time.time()
 workbook = xlrd.open_workbook(r"C:\path\IBGE13.xls")
 #Selecionando a aba da planilha
 sheet = workbook.sheet_by_name("Url")
-
-
 
 
 #Percorrendo a planilha na coluna certa
