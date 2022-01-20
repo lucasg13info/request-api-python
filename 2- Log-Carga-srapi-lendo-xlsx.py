@@ -33,9 +33,16 @@ import requests
 import xlrd
 import ast
 import time
+import logging
 
 #Timer de execução do Robô
 timerCod = time.time()
+
+#Configuração do Log
+logging.basicConfig(
+    filename = "C:\path\log\logCargaAPI.log",
+    level = logging.DEBUG,
+    format = "%(asctime)s ::")
 
 #Conexão com a planilha
 workbook = xlrd.open_workbook(r"C:\path\IBGE13.xls")
@@ -51,7 +58,7 @@ for i1 in range(1, 11):
     try:
         convertListDicionario = ast.literal_eval(jsonFormatadoParaInsert)
     except:
-        print('DADO', i1, 'COM VALORES INCORRETOS NA PLANILHA!')
+        logging.warning('DADO', i1, 'COM VALORES INCORRETOS NA PLANILHA!')
     #print(type(convertListDicionario))
     #print(convertListDicionario)
 
@@ -59,18 +66,19 @@ for i1 in range(1, 11):
     #POST API Python
     url = 'http://10.61.228.86:1337/api/cidades-ibges'
     r = requests.post(url, json= convertListDicionario)
-    print('Dados inseridos: ', i1, '  Status code:', r.status_code)
+    logging.warning('Dados inseridos: ', i1, '  Status code:', r.status_code)
     #print(f"Status Code: {r.status_code}, Response: {r.json()}")
 
 
-print('*--------------------------------------------------------------------*')
-print('Foram inseridos no total:', i1 ,'dados na API.')
-print('*---------------------------------------------------------------------*')
+
+logging.warning('*--------------------------------------------------------------------*')
+logging.warning('Foram inseridos no total:', i1 ,'dados na API.')
+logging.warning('*---------------------------------------------------------------------*')
 
 
 tempoExec = time.time() -timerCod
-print('O tempo de execução do robô foi de: {} Segundos.'.format(tempoExec))
-print('*---------------------------------------------------------------------*')
+logging.warning('O tempo de execução do robô foi de: {} Segundos.'.format(tempoExec))
+logging.warning('*---------------------------------------------------------------------*')
 
  
     
